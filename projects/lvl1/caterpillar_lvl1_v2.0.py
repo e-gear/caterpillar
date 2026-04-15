@@ -219,45 +219,41 @@ def start_game():
     while start_username == True:
         if start_username == True:
             username_Yn = input('have you played before? Y/n')
-            if username_Yn.upper() == "y":
+            if username_Yn.upper() == "Y":
                 username = input('what is your username?')
                 password = input('what is your password?')
+                start_username = False
+                return start_username
             elif username_Yn.lower() == "n":
-                    new_username = input('what is your new username?')
-                    new_password = input('what is your new password?')
-                    name = input('what is your name?')
-                    r_password = input('what would you like your recovery password to be? NOTE: make sure you remember it. it will be your only way to accsess you previous scores if you forget your password.')
-                    print('hello ', name, ', welcome to the system.')
+                new_username = input('what is your new username?')
+                new_password = input('what is your new password?')
+                name = input('what is your name?')
+                r_password = input('what would you like your recovery password to be? NOTE: make sure you remember it. it will be your only way to accsess you previous scores if you forget your password.')
+                print('hello ', name, ', welcome to the system.')
+                start_username = False
+                return start_username
             else:
-                n_understand = input('sorry, i dont understand. please retype')
-                if n_understand.upper() == "y":
-                    username = input('what is your username?')
-                    password = input('what is your password?')
-                elif n_understand.lower() == "n":
-                    new_username = input('what is your new username?')
-                    new_password = input('what is your new password?')
-                    name = input('what is your name?')
-                    r_password = input('what would you like your recovery password to be? NOTE: make sure you remember it. it will be your only way to accsess you previous scores if you forget your password.')
-                    print('hello ', name, ', welcome to the system.')
+                n_understand = input('sorry, i dont understand. please type "R" to reset. press "T" to terminate process')
+                if n_understand.upper() == 'T':
+                    start_username = False
+                    return start_username
+                elif n_understand.lower == 'R':
+                    start_username = True
+                    return start_username
                 else:
-                    n_understand = input('sorry, i dont understand. please retype')
-                    if n_understand.upper() == "y":
-                        username = input('what is your username?')
-                        password = input('what is your password?')
-                    elif n_understand.lower() == "n":
-                        new_username = input('what is your new username?')
-                        new_password = input('what is your new password?')
-                        name = input('what is your name?')
-                        r_password = input('what would you like your recovery password to be? NOTE: make sure you remember it. it will be your only way to accsess you previous scores if you forget your password.')
-                        print('hello ', name, ', welcome to the system.')
-                    else:
-                        terminate_reset = input('i do not understand. too many mistakes have been entered. press "R" to reset login process. press "T" to terminate login process. NOTE: you will lose your score if you terminate')
-                        if terminate_reset.upper() == 'r':
-                            start_username = True
-                            return start_username
-                        if terminate_reset.upper() == 't':
+                    nunderstand = True
+                    while nunderstand == True:
+                        print_nunderstand = input('sorry, i dont understand. please type "R" to reset. press "T" to terminate process')
+                        if n_understand.upper() == 'T':
                             start_username = False
                             return start_username
+                        elif n_understand.lower == 'R':
+                            start_username = True
+                            return start_username
+                        else:
+                            start_username = True
+                            return start_username
+                        break
 
 def restart_game():
     if game_started == True:
