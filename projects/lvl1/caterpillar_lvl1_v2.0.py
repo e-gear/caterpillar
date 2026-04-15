@@ -31,7 +31,6 @@ text_turtle = t.Turtle()
 text_turtle.color('white')
 text_turtle.write('press SPACE to start', align='center', font=('arial', 16, 'bold'))
 text_turtle.hideturtle()
-start_1 = True
 
 darkmode = True
 
@@ -39,8 +38,6 @@ score_turtle = t.Turtle()
 score_turtle.hideturtle()
 score_turtle.color('white')
 score_turtle.speed(0)
-start_2 = True
-
 
 def outside_window():
     left_wall = -t.window_width() / 2
@@ -54,7 +51,6 @@ def outside_window():
         y < bottom_wall or \
         y > top_wall
     return outside
-
 
 def game_over():
     if darkmode == False:
@@ -77,7 +73,6 @@ def display_score(current_score):
     y = (t.window_height() / 2) - 50
     score_turtle.setpos(x, y)
     score_turtle.write(str(current_score), align='center', font=('arial', 40, 'normal'))
-
 
 def place_leaf():
     leaf.ht()
@@ -135,52 +130,35 @@ def start_game():
     seconds = 1
     
 
-    if start_1 == True: 
-        if start_2 == True: 
-            if start_3 == True:
-                print('''
-                    loading.
-                    loading..
-                    loading...
-                    loading.
-                    loading..
-                    loading...
+    print('''
+        loading.
+        loading..
+        loading...
+        loading.
+        loading..
+        loading...
 
-                    start up complete
-                    connection to Lepidopteran server established
-                    starting boot
-                    ''')
+        start up complete
+        connection to Lepidopteran server established
+        starting boot
+        ''')
+    
+    print('''
+        caterpillar online
+        leaf online
+    ''')
 
+    print('''
+        caterpillar test: started
+        caterpillar test: sucsessful
+        leaf test: started
+        leaf test: sucsessful
 
-                if caterpillar_online == True:
-                    print('''
-                    caterpilar online
-                          ''')
-
-                if leaf_online == True:
-                    print('''
-                    leaf online
-                          ''')
-                if caterpillar_online == False:
-                    print('''
-                    caterpilar offline
-                          ''')
-                    
-                if leaf_online == False:
-                    print('''
-                    leaf offline
-                          ''')
-                print('''
-                    caterpillar test: started
-                    caterpillar test: sucsessful
-                    leaf test: started
-                    leaf test: sucsessful
-
-                    boot sucsessful
+        boot sucsessful
 
 
 
-                ''')
+    ''')
 
 
 
