@@ -221,10 +221,25 @@ def start_game():
         if start_username == True:
             username_Yn = input('have you played before? Y/n')
             if username_Yn.upper() == "Y":
-                username = input('what is your username?')
-                password = input('what is your password?')
-                start_username = False
-                return start_username
+                username = input("what is your username? ")
+                with open("/home/edwin/Desktop/home/programming/Python/caterpillar/username details jsons/username_deatils.json", "r") as file:
+                    data = j.load(file)
+                real_username = None
+                for key in data:
+                    if key.startswith("username"):
+                        real_username = data[key]
+                if username == real_username:
+                    password = input("what is your password? ")
+                    if password == data.get("password"):
+                        print("Login success")
+                        start_username = False
+                        return start_username
+                    else:
+                        print("wrong password. Try again.")
+                        return start_username
+                else:
+                    print("username not found")
+                    return start_username
             elif username_Yn.lower() == "n":
                 new_username = input('what is your new username?')
                 new_password = input('what is your new password?')
