@@ -1,6 +1,7 @@
 from datetime import datetime
 from pathlib import Path 
 import turtle as t
+import json as j
 import time
 import random
 from tkinter import messagebox, simpledialog, Tk
@@ -204,13 +205,13 @@ def start_game():
             print(print_currenttime)
             print(print_seconds)
             print(print_leaves_collected)
-            score_times = Path('/home/edwin/Desktop/home/programming/Python/caterpillar/scores_lvl1_files/scores_lvl1-times')
+            score_times = Path('/home/edwin/Desktop/home/programming/Python/caterpillar/score files/lvl1 files/scores_lvl1-times')
             score_time = str(currenttime) + '\n' + str(print_seconds) + '\n\n'
             score_times.write_text(score_time)
-            score_scores = Path('/home/edwin/Desktop/home/programming/Python/caterpillar/scores_lvl1_files/scores_lvl1-score')
+            score_scores = Path('/home/edwin/Desktop/home/programming/Python/caterpillar/score files/lvl1 files/scores_lvl1-scores')
             score_score = str(print_currenttime) + '\n' + str(print_leaves_collected) + '\n\n'
             score_scores.write_text(score_score)
-            score_totals = Path('/home/edwin/Desktop/home/programming/Python/caterpillar/scores_lvl1_files/scores_lvl1')
+            score_totals = Path('/home/edwin/Desktop/home/programming/Python/caterpillar/score files/lvl1 files/scores_lvl1')
             score_total = str(print_currenttime) + '\n' + str(print_seconds) + '\n' + str(print_leaves_collected) + '\n\n'
             score_totals.write_text(score_total)
             start_username = True
