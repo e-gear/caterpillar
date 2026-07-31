@@ -1,9 +1,11 @@
 from datetime import datetime
 from pathlib import Path 
 import turtle as t
+import json as j
 import time
 import random
 from tkinter import messagebox, simpledialog, Tk
+
 
 t.bgcolor('black')
 
@@ -30,7 +32,6 @@ text_turtle = t.Turtle()
 text_turtle.color('white')
 text_turtle.write('press SPACE to start', align='center', font=('arial', 16, 'bold'))
 text_turtle.hideturtle()
-start_1 = True
 
 darkmode = True
 
@@ -38,8 +39,6 @@ score_turtle = t.Turtle()
 score_turtle.hideturtle()
 score_turtle.color('white')
 score_turtle.speed(0)
-start_2 = True
-
 
 def outside_window():
     left_wall = -t.window_width() / 2
@@ -54,14 +53,13 @@ def outside_window():
         y > top_wall
     return outside
 
-
 def game_over():
     if darkmode == False:
         caterpillar.color('yellow')
         leaf.color('yellow')
         text_turtle.penup()
         text_turtle.hideturtle()
-        text_turtle.write('GAME OVER! press space to restart', align='center', font=('pixel', 30, 'normal'))
+        text_turtle.write('GAME OVER!', align='center', font=('pixel', 30, 'normal'))
     else:
         caterpillar.color('black')
         leaf.color('black')
@@ -76,7 +74,6 @@ def display_score(current_score):
     y = (t.window_height() / 2) - 50
     score_turtle.setpos(x, y)
     score_turtle.write(str(current_score), align='center', font=('arial', 40, 'normal'))
-
 
 def place_leaf():
     leaf.ht()
@@ -132,63 +129,57 @@ def start_game():
     display_score(score)
     place_leaf()
     seconds = 1
+    
 
-    if start_1 == True: 
-        if start_2 == True: 
-            if start_3 == True:
-                print('''
-                    loading.
-                    loading..
-                    loading...
-                    loading.
-                    loading..
-                    loading...
+    print('''
+        loading.
+        loading..
+        loading...
+        loading.
+        loading..
+        loading...
 
-                    start up complete
-                    connection to Lepidopteran server established
-                    starting boot
-                    ''')
+        start up complete
+        connection to Lepidopteran server established
+        starting boot
+        ''')
+    
+    print('''
+        caterpillar online
+        leaf online
+    ''')
 
+    print('''
+        caterpillar test: started
+        caterpillar test: sucsessful
+        leaf test: started
+        leaf test: sucsessful
 
-                if caterpillar_online == True:
-                    print('''
-                    caterpilar online
-                          ''')
-
-                if leaf_online == True:
-                    print('''
-                    leaf online
-                          ''')
-                if caterpillar_online == False:
-                    print('''
-                    caterpilar offline
-                          ''')
-                    
-                if leaf_online == False:
-                    print('''
-                    leaf offline
-                          ''')
-                print('''
-                    caterpillar test: started
-                    caterpillar test: sucsessful
-                    leaf test: started
-                    leaf test: sucsessful
-
-                    boot sucsessful
+        boot sucsessful
 
 
 
-                ''')
+    ''')
+
+
+
+
+    
+
 
     #print("before set position")
     #caterpillar.setposition(0,0)
      
     start = datetime.now()
     leaves_collected = 0
-         
+    start_username = False
+    #caterpillar_healthy()
+    print_count = 0
     while True:
+        if print_count % 100 == 0:
+            print('caterpillar healthy :)')
+        print_count += 1
         caterpillar.forward(caterpillar_speed)
-        caterpillar_healthy()
         #if pause == True:
         #    caterpillar.speed(0)
         if caterpillar.distance(leaf) < 20:
@@ -218,15 +209,8 @@ def start_game():
             print(print_currenttime)
             print(print_seconds)
             print(print_leaves_collected)
-            score_times = Path('/home/edwin/Desktop/home/programming/Python/caterpillar/scores_lvl1_files/scores_lvl1-times')
-            score_time = str(print_currenttime) + '\n' + str(print_seconds) + '\n\n'
-            score_times.write_text(score_time)
-            score_scores = Path('/home/edwin/Desktop/home/programming/Python/caterpillar/scores_lvl1_files/scores_lvl1-score')
-            score_score = str(print_currenttime) + '\n' + str(print_leaves_collected) + '\n\n'
-            score_scores.write_text(score_score)
-            score_totals = Path('/home/edwin/Desktop/home/programming/Python/caterpillar/scores_lvl1_files/scores_lvl1')
-            score_total = str(print_currenttime) + '\n' + str(print_seconds) + '\n' + str(print_leaves_collected) + '\n\n'
-            score_totals.write_text(score_total)
+            start_username = True
+            caterpillarhealthy = False
             break
 
 def restart_game():
@@ -234,7 +218,10 @@ def restart_game():
             caterpillar.speed()
 
 def caterpillar_healthy():
-    print('caterpillar healthy :)')
+    caterpillarhealthy = True
+    while caterpillarhealthy == True:
+        print('caterpillar healthy :)')
+        time.sleep(1)
 
 def move_up():
     if caterpillar.heading() == 0 or caterpillar.heading() == 180:

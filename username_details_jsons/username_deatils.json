@@ -1,0 +1,16 @@
+{
+    "user1" : {
+        "username": "edwin",
+        "password": "dancingdino43",
+        "recovery_password": "gear12345",
+        "name": "Edwin Gear",
+        "code": "1234567890"
+    },
+    "user2" : {
+        "username" : "",
+        "password" : "",
+        "recovery_password" : "",
+        "name" : "",
+        "code": "673952963"  
+    }
+}
